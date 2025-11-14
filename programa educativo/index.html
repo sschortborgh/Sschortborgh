@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recomendador de Películas Educativas</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container">
+			<h1>Recomendador de Películas Educativas</h1>
+			<p class="tagline">Encuentra películas educativas por edad, tema y duración — mucha interactividad con JavaScript.</p>
+		</div>
+	</header>
+
+	<main class="container">
+		<section class="controls" aria-label="Controles de búsqueda y filtros">
+			<div class="control-row">
+				<input id="search" type="search" placeholder="Buscar por título o palabra clave (pulsa / para buscar)" aria-label="Buscar películas">
+				<select id="ageFilter" aria-label="Filtrar por edad">
+					<option value="any">Todas las edades</option>
+					<option value="kids">Niños (0-10)</option>
+					<option value="teens">Adolescentes (11-17)</option>
+					<option value="adult">Adultos</option>
+				</select>
+				<select id="sort" aria-label="Ordenar por">
+					<option value="relevance">Más relevantes</option>
+					<option value="rating">Mejor valoradas</option>
+					<option value="year">Año (más nuevas)</option>
+					<option value="duration">Duración (más cortas)</option>
+				</select>
+			</div>
+
+			<div class="filter-row">
+				<div class="topics-row" id="topicsRow">
+					<label><input type="checkbox" value="Science"> Ciencia</label>
+					<label><input type="checkbox" value="History"> Historia</label>
+					<label><input type="checkbox" value="Math"> Matemáticas</label>
+					<label><input type="checkbox" value="Art"> Arte</label>
+					<label><input type="checkbox" value="Nature"> Naturaleza</label>
+					<label><input type="checkbox" value="Tech"> Tecnología</label>
+					<label><input type="checkbox" value="Economy"> Economía</label>
+					<label><input type="checkbox" value="Biographies"> Biografías</label>
+				</div>
+
+				<div class="extra-filters">
+					<label>Duración hasta: <select id="maxDuration"><option value="any">Cualquiera</option><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option><option value="90">90 min</option></select></label>
+					<label>Min. puntuación: <input id="minRating" type="range" min="0" max="10" step="0.1" value="0"><span id="minRatingVal">0</span></label>
+				</div>
+			</div>
+
+			<div class="control-row actions">
+				<button id="recommendBtn">Recomiéndame una</button>
+				<button id="surpriseBtn">Sorpresa</button>
+				<button id="toggleFavs">Ver Favoritas</button>
+				<button id="exportFavs">Exportar Favoritas</button>
+				<button id="importFavs">Importar Favoritas</button>
+				<button id="clearFilters">Limpiar filtros</button>
+			</div>
+		</section>
+
+		<section id="results" class="results" aria-live="polite"></section>
+	</main>
+
+	<div id="modal" class="modal" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<button id="closeModal" class="close">×</button>
+			<div id="modalBody"></div>
+		</div>
+	</div>
+
+	<footer class="site-footer">
+		<div class="container">
+			<small>Atajos: <strong>/</strong> buscar · <strong>r</strong> recomendar · <strong>f</strong> alternar favoritas</small>
+		</div>
+	</footer>
+
+	<script src="script.js" defer></script>
+</body>
+</html>
